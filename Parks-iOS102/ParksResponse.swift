@@ -9,7 +9,7 @@ struct ParksResponse: Codable {
     let data: [Park]
 }
 
-struct Park: Codable {
+struct Park: Codable, Identifiable {
     let id: String
     let fullName: String
     let description: String
