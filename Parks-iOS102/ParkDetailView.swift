@@ -20,6 +20,29 @@ struct ParkDetailView: View {
             .padding()
             
             // TODO: Add horizontal scrolling images
+            ScrollView(.horizontal) {
+                HStack(spacing: 16) {
+                    ForEach(park.images) { image in
+                        Rectangle()
+                            .aspectRatio(7/5, contentMode: .fit)
+                            .containerRelativeFrame(.horizontal, count: 9, span: 8, spacing: 16)
+                            .overlay {
+                                AsyncImage(url: URL(string: image.url)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                } placeholder: {
+                                    Color(.systemGray4)
+                                }
+                            }
+                            .cornerRadius(16)
+                    }
+                    .safeAreaPadding(.horizontal)
+                }
+                .scrollTargetLayout()
+            }
+            .scrollTargetBehavior(.viewAligned)
+            .scrollIndicators(.hidden)
         }
     }
 }

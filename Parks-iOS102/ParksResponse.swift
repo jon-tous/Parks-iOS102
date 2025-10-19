@@ -21,10 +21,12 @@ struct Park: Codable, Identifiable {
     let name: String
 }
 
-struct ParkImage: Codable {
+struct ParkImage: Codable, Identifiable {
     let title: String
     let caption: String
     let url: String
+
+    var id: String { url }
 }
 
 extension Park {
