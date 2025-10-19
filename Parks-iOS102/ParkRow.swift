@@ -38,3 +38,7 @@ struct ParkRow: View {
             .padding(.horizontal)
     }
 }
+
+#Preview {
+    ParkRow(park: Park.mocked)
+}
